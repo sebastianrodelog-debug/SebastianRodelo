@@ -1,0 +1,20 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Comments: Everyone can read, User can write, Only Admin can delete
+    match /comments/{commentId} {
+      allow read: if true;
+      allow create: if request.auth != null;
+      allow delete: if request.auth.token.email == "sebastianrodelog@gmail.com" 
+                    || request.auth.token.email == "sebastianrodelog@gamil.com";
+    }
+
+    // Contacts: Everyone can create (public contact form), Only Admin can read
+    match /contacts/{contactId} {
+      allow create: if true;
+      allow read: if request.auth.token.email == "sebastianrodelog@gmail.com" 
+                   || request.auth.token.email == "sebastianrodelog@gamil.com";
+    }
+  }
+}

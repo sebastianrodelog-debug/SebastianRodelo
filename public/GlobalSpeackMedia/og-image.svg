@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9333ea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#581c87;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grad)" />
+  <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="80" font-weight="bold" fill="white">GlobalSpeak</text>
+  <text x="50%" y="60%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="40" fill="#f3e8ff">Conecta con mas personas como tu</text>
+</svg>
