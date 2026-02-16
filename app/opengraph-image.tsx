@@ -29,7 +29,8 @@ export default async function Image() {
     // "Color negro personalizado en las lineas" might mean a border or specific styling.
 
     const imagePath = join(process.cwd(), 'public', 'og-bg.png')
-    const imageData = readFileSync(imagePath)
+    const fileBuffer = readFileSync(imagePath)
+    const base64Image = `data:image/png;base64,${fileBuffer.toString('base64')}`
 
     return new ImageResponse(
         (
@@ -49,7 +50,7 @@ export default async function Image() {
                 {/* Background Image */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                    src={imageData as any}
+                    src={base64Image}
                     alt="Background"
                     style={{
                         position: 'absolute',

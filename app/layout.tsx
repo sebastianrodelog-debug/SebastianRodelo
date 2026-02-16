@@ -14,6 +14,7 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://sebastianrodelo.com'), // Base URL for social images
   title: 'Sebastian Rodelo | Junior Full Stack Developer',
   description: 'Portafolio Web Profesional de Sebastian Rodelo. Junior Developer especializado en experiencias digitales impactantes.',
   keywords: ['Full Stack Developer', 'React', 'Next.js', 'Portfolio', 'Web Development'],
