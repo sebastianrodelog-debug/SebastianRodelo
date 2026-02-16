@@ -14,7 +14,7 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://sebastianrodelo.com'), // Base URL for social images
+  metadataBase: new URL('https://sebastian-rodelo.vercel.app'), // Vercel URL
   title: 'Sebastian Rodelo | Junior Full Stack Developer',
   description: 'Portafolio Web Profesional de Sebastian Rodelo. Junior Developer especializado en experiencias digitales impactantes.',
   keywords: ['Full Stack Developer', 'React', 'Next.js', 'Portfolio', 'Web Development'],
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Sebastian Rodelo | Junior Full Stack Developer',
     description: 'Portafolio Web Profesional. Experiencias digitales de alto impacto.',
-    url: 'https://sebastianrodelo.com', // Replace with actual URL if known, or leave placeholder
+    url: 'https://sebastian-rodelo.vercel.app', // Vercel URL
     siteName: 'Sebastian Rodelo Portfolio',
     locale: 'es_ES',
     type: 'website',
