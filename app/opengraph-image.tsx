@@ -28,7 +28,7 @@ export default async function Image() {
     // Let's try to simulate the design requested.
     // "Color negro personalizado en las lineas" might mean a border or specific styling.
 
-    const imagePath = join(process.cwd(), 'public', 'og-bg.png')
+    const imagePath = join(process.cwd(), 'public', 'og-bg-ws.png')
     const fileBuffer = readFileSync(imagePath)
     const base64Image = `data:image/png;base64,${fileBuffer.toString('base64')}`
 
