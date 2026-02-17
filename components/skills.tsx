@@ -5,7 +5,7 @@ import { Terminal } from "lucide-react"
 import { technologies, tools, type Skill } from "@/lib/data"
 
 function SkillCard({ item }: { item: Skill }) {
-  const isUrl = item.icon.startsWith("http")
+  const isUrl = item.icon.startsWith("http") || item.icon.startsWith("/")
   const isLucide = item.icon.startsWith("lucide-")
 
   return (

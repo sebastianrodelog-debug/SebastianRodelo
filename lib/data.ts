@@ -87,14 +87,34 @@ export const projects = [
   },
   {
     id: 5,
+    title: "Turnos Brillantes",
+    stack: ["React", "Next.js", "Firebase", "Tailwind CSS", "Vercel"],
+    description: "Sistema de gestión de turnos diseñado para negocios que permite manejar el flujo de clientes de manera rápida, fácil y digital.",
+    problem: "La gestión de turnos manual en negocios genera tiempos de espera largos, filas desorganizadas y una mala experiencia para el cliente.",
+    solution: "Una plataforma digital que permite a los negocios gestionar turnos de manera eficiente, mejorando la experiencia del cliente y optimizando los tiempos de espera.",
+    color: "from-amber-950/50 to-background",
+    demo: "https://turnos-brillantes-col.vercel.app/",
+    repo: "#",
+    video: "/TurnosBrillantesMedia/Grabación de pantalla 2026-02-17 063151.mp4",
+    image: "/TurnosBrillantesMedia/fondoImg.png",
+    gallery: [
+      "/TurnosBrillantesMedia/Captura de pantalla 2026-02-17 062724.png",
+      "/TurnosBrillantesMedia/Captura de pantalla 2026-02-17 062734.png",
+      "/TurnosBrillantesMedia/Captura de pantalla 2026-02-17 062747.png",
+      "/TurnosBrillantesMedia/Captura de pantalla 2026-02-17 062758.png",
+      "/TurnosBrillantesMedia/Captura de pantalla 2026-02-17 062814.png",
+    ]
+  },
+  {
+    id: 6,
     title: "Ver más proyectos",
     stack: ["GitHub", "Open Source"],
     description: "Explora el resto de mi portafolio y contribuciones en mi perfil de GitHub.",
     problem: "",
     solution: "",
     color: "from-neutral-900 to-black",
-    demo: "https://github.com", // Linking to GitHub
-    repo: "https://github.com",
+    demo: "https://github.com/MillerSebastian", // Linking to GitHub
+    repo: "https://github.com/MillerSebastian",
     image: "/portfolio-icon.png", // Using a generic icon or profile image
     gallery: []
   },
@@ -120,7 +140,7 @@ export const technologies: Skill[] = [
   { name: "Firebase", icon: "firebase" },
   { name: "Vercel", icon: "vercel" },
   { name: "Express", icon: "express" },
-  { name: "Solar2D", icon: "https://upload.wikimedia.org/wikipedia/commons/3/30/Solar2D_Logo.png" }, // Placeholder for Lua/Solar2D if needed
+  { name: "Solar2D", icon: "/icons/solar2d.png" },
 ]
 
 export const tools: Skill[] = [

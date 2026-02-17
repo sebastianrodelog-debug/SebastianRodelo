@@ -89,8 +89,8 @@ export function Projects() {
               className="w-full md:flex-shrink-0 md:w-[70vw]"
             >
               <Link
-                href={project.id === 5 ? project.demo : `/projects/${project.id}`}
-                target={project.id === 5 ? "_blank" : "_self"}
+                href={project.id === 6 ? project.demo : `/projects/${project.id}`}
+                target={project.id === 6 ? "_blank" : "_self"}
                 className="group w-full text-left cursor-pointer block"
               >
                 <div

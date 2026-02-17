@@ -41,7 +41,7 @@ export function Footer() {
             <div className="flex items-center gap-4">
               {/* Social Buttons */}
               <a
-                href="https://github.com"
+                href="https://github.com/MillerSebastian"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full bg-secondary text-foreground hover:bg-primary hover:text-primary-foreground transition-all hover:scale-110 shadow-sm"
