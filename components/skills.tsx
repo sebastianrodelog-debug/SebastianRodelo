@@ -2,38 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Terminal } from "lucide-react"
-
-// Data structure for skills
-interface Skill {
-  name: string
-  icon: string // Simple Icons slug or "lucide" for generic components
-}
-
-const technologies: Skill[] = [
-  { name: "React", icon: "react" },
-  { name: "Vue.js", icon: "https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg" },
-  { name: "TypeScript", icon: "typescript" },
-  { name: "JavaScript", icon: "javascript" },
-  { name: "Next.js", icon: "nextdotjs" },
-  { name: "Node.js", icon: "nodedotjs" },
-  { name: "Python", icon: "python" },
-  { name: "PostgreSQL", icon: "postgresql" },
-  { name: "MongoDB", icon: "mongodb" },
-  { name: "GraphQL", icon: "graphql" },
-]
-
-const tools: Skill[] = [
-  { name: "Git", icon: "git" },
-  { name: "GitHub", icon: "github" },
-  { name: "Docker", icon: "docker" },
-  { name: "AWS", icon: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" },
-  { name: "Figma", icon: "figma" },
-  { name: "VS Code", icon: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" },
-  { name: "Terminal", icon: "lucide-terminal" },
-  { name: "npm", icon: "npm" },
-  { name: "Vercel", icon: "vercel" },
-  { name: "Linux", icon: "linux" },
-]
+import { technologies, tools, type Skill } from "@/lib/data"
 
 function SkillCard({ item }: { item: Skill }) {
   const isUrl = item.icon.startsWith("http")

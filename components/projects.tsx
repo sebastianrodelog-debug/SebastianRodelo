@@ -3,7 +3,7 @@
 import { useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import Link from "next/link"
-import { projects } from "@/lib/data"
+import { projects, allSkills } from "@/lib/data"
 
 export function Projects() {
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -89,43 +89,74 @@ export function Projects() {
               className="w-full md:flex-shrink-0 md:w-[70vw]"
             >
               <Link
-                href={`/projects/${project.id}`}
+                href={project.id === 5 ? project.demo : `/projects/${project.id}`}
+                target={project.id === 5 ? "_blank" : "_self"}
                 className="group w-full text-left cursor-pointer block"
               >
                 <div
-                  className={`relative aspect-[16/10] rounded-xl bg-gradient-to-br ${project.color} border border-border overflow-hidden transition-all duration-500 group-hover:border-primary/50`}
+                  className={`relative aspect-[16/10] rounded-xl overflow-hidden border border-border transition-all duration-500 group-hover:border-primary/50`}
                 >
+                  {/* Background Image with Blur & Darkening */}
+                  <div
+                    className="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                    style={{ backgroundImage: `url('${project.image}')` }}
+                  />
+                  <div className="absolute inset-0 z-10 bg-black/60 backdrop-blur-[2px] transition-all duration-500 group-hover:bg-black/40 group-hover:backdrop-blur-none" />
+
+                  {/* Gradient Overlay for Text Readability */}
+                  <div className={`absolute inset-0 z-20 bg-gradient-to-t ${project.color} opacity-80 mix-blend-multiply`} />
+
                   {/* Project number */}
-                  <div className="absolute top-2 left-3 md:top-8 md:left-8">
-                    <span className="text-3xl md:text-8xl font-display font-bold text-foreground/5 group-hover:text-foreground/10 transition-colors duration-500">
+                  <div className="absolute top-2 left-3 md:top-8 md:left-8 z-30">
+                    <span className="text-3xl md:text-8xl font-display font-bold text-white/10 group-hover:text-white/20 transition-colors duration-500">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
 
                   {/* Project info overlay */}
-                  <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-8">
-                    {/* Stack tags */}
-                    <div className="hidden md:flex flex-wrap gap-2 mb-4 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                      {project.stack.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-2 py-1 text-xs rounded bg-background/80 text-foreground border border-border"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                  <div className="absolute inset-0 z-30 flex flex-col justify-end p-4 md:p-8">
+                    {/* Stack Icons */}
+                    <div className="hidden md:flex flex-wrap gap-3 mb-4 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                      {project.stack.map((techName) => {
+                        // Find icon in allSkills
+                        const skill = allSkills.find(s => s.name === techName) || { name: techName, icon: "" }
+                        const isUrl = skill.icon.startsWith("http")
+                        const isLucide = skill.icon.startsWith("lucide-")
+
+                        // Fallback purely text if no icon found (shouldn't happen if data matches)
+                        if (!skill.icon) return (
+                          <span key={techName} className="px-2 py-1 text-xs rounded bg-white/10 text-white border border-white/20 backdrop-blur-md">
+                            {techName}
+                          </span>
+                        )
+
+                        return (
+                          <div key={techName} className="p-2 rounded-lg bg-white/10 border border-white/10 backdrop-blur-md" title={techName}>
+                            {isLucide ? (
+                              <span className="text-xs text-white">{techName}</span> // Placeholder for Lucide if we don't import specific icons dynamically
+                            ) : (
+                              <img
+                                src={isUrl ? skill.icon : `https://cdn.simpleicons.org/${skill.icon}`}
+                                alt={techName}
+                                className="w-5 h-5 object-contain invert" // Invert to make simple icons white
+                                loading="lazy"
+                              />
+                            )}
+                          </div>
+                        )
+                      })}
                     </div>
                     {/* Mobile: Smaller Title */}
-                    <h3 className="font-display text-base md:text-3xl font-bold text-foreground group-hover:text-primary transition-colors duration-300 line-clamp-1 md:line-clamp-none">
+                    <h3 className="font-display text-base md:text-3xl font-bold text-white group-hover:text-primary transition-colors duration-300 line-clamp-1 md:line-clamp-none drop-shadow-lg">
                       {project.title}
                     </h3>
-                    <p className="hidden md:block text-muted-foreground text-sm mt-2 max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 leading-relaxed">
+                    <p className="hidden md:block text-gray-300 text-sm mt-2 max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 leading-relaxed drop-shadow-md">
                       {project.description}
                     </p>
                   </div>
 
                   {/* Corner accent */}
-                  <div className="absolute top-4 right-4 w-2 h-2 md:w-3 md:h-3 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute top-4 right-4 z-30 w-2 h-2 md:w-3 md:h-3 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-[0_0_10px_theme(colors.primary.DEFAULT)]" />
                 </div>
               </Link>
             </motion.div>

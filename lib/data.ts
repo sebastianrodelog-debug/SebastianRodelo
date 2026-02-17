@@ -2,7 +2,7 @@ export const projects = [
   {
     id: 1,
     title: "StudyFlow",
-    stack: ["React", "Next.js", "Tailwind CSS", "PostgreSQL"],
+    stack: ["React", "Next.js", "Tailwind CSS", "PostgreSQL", "Vercel"],
     description:
       "Plataforma integral para la gestion y organizacion academica de estudiantes. Centraliza horarios, tareas y material de estudio.",
     problem:
@@ -25,7 +25,7 @@ export const projects = [
   {
     id: 2,
     title: "LifeSync",
-    stack: ["React", "Node.js", "Express", "MongoDB"],
+    stack: ["React", "Firebase", "Node.js", "Tailwind CSS", "Vercel"],
     description:
       "Aplicacion para la sincronizacion de estilo de vida, salud y productividad. Permite a los usuarios llevar un registro de sus habitos y metas diarias.",
     problem:
@@ -48,7 +48,7 @@ export const projects = [
   {
     id: 3,
     title: "GlobalSpeak",
-    stack: ["React", "Firebase Realtime Database", "Tailwind CSS", "Vercel"],
+    stack: ["Vue.js", "Firebase", "Tailwind CSS", "Vercel"],
     description:
       "Plataforma de chat en tiempo real diseñada para conectar personas globalmente. Desafiamos los limites de Firebase Realtime Database para ofrecer mensajeria instantanea fluida.",
     problem:
@@ -69,7 +69,7 @@ export const projects = [
   {
     id: 4,
     title: "ServiScore",
-    stack: ["React", "Next.js", "Tailwind CSS"], // Inferring stack
+    stack: ["React", "Next.js", "Tailwind CSS", "Firebase", "Vercel"],
     description: "Conectando emprendedores. Plataforma para conectar servicios y calificaciones confiables.",
     problem: "La falta de confianza y visibilidad para nuevos emprendedores limita su crecimiento.",
     solution: "Una plataforma centralizada donde los usuarios pueden calificar y descubrir servicios locales verificados.",
@@ -96,5 +96,43 @@ export const projects = [
     demo: "https://github.com", // Linking to GitHub
     repo: "https://github.com",
     image: "/portfolio-icon.png", // Using a generic icon or profile image
+    gallery: []
   },
 ]
+
+export interface Skill {
+  name: string
+  icon: string
+}
+
+export const technologies: Skill[] = [
+  { name: "React", icon: "react" },
+  { name: "Vue.js", icon: "https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg" },
+  { name: "TypeScript", icon: "typescript" },
+  { name: "JavaScript", icon: "javascript" },
+  { name: "Next.js", icon: "nextdotjs" },
+  { name: "Node.js", icon: "nodedotjs" },
+  { name: "Python", icon: "python" },
+  { name: "PostgreSQL", icon: "postgresql" },
+  { name: "MongoDB", icon: "mongodb" },
+  { name: "GraphQL", icon: "graphql" },
+  { name: "Tailwind CSS", icon: "tailwindcss" },
+  { name: "Firebase", icon: "firebase" },
+  { name: "Vercel", icon: "vercel" },
+  { name: "Express", icon: "express" },
+  { name: "Solar2D", icon: "https://upload.wikimedia.org/wikipedia/commons/3/30/Solar2D_Logo.png" }, // Placeholder for Lua/Solar2D if needed
+]
+
+export const tools: Skill[] = [
+  { name: "Git", icon: "git" },
+  { name: "GitHub", icon: "github" },
+  { name: "Docker", icon: "docker" },
+  { name: "AWS", icon: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" },
+  { name: "Figma", icon: "figma" },
+  { name: "VS Code", icon: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" },
+  { name: "Terminal", icon: "lucide-terminal" },
+  { name: "npm", icon: "npm" },
+  { name: "Linux", icon: "linux" },
+]
+
+export const allSkills = [...technologies, ...tools]
