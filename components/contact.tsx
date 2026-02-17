@@ -8,6 +8,12 @@ import { db } from "@/lib/firebase"
 import { collection, addDoc, serverTimestamp } from "firebase/firestore"
 
 import emailjs from "@emailjs/browser"
+import dynamic from "next/dynamic"
+
+const Globe = dynamic(() => import("@/components/globe"), {
+  ssr: false,
+  loading: () => <div className="w-full h-full bg-card/20 animate-pulse rounded-2xl flex items-center justify-center text-muted-foreground text-sm">Cargando Mundo...</div>
+})
 
 export function Contact() {
   const [formState, setFormState] = useState({ name: "", email: "", message: "" })
@@ -134,6 +140,19 @@ export function Contact() {
                 </>
               )}
             </button>
+
+            <div className="w-full mt-8 rounded-xl overflow-hidden border border-border/50 shadow-sm">
+              <video
+                src="/AboutMultimedia/Pixel_Art_Animation_Generation_Request.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-auto object-cover opacity-80 hover:opacity-100 transition-opacity"
+              />
+            </div>
+
+
           </motion.form>
 
           {/* Right Column: Contact Info & Map */}
@@ -142,7 +161,7 @@ export function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="space-y-12"
+            className="space-y-8"
           >
             {/* Direct Contact Buttons */}
             <div className="space-y-6">
@@ -218,16 +237,11 @@ export function Contact() {
                 </div>
               </div>
 
-              <div className="rounded-2xl overflow-hidden border border-border/50 shadow-lg h-[300px] w-full">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62667.49922406721!2d-74.8591746662544!3d10.984592329228864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef42d44d12ae605%3A0x2633844581b917b2!2sBarranquilla%2C%20Atl%C3%A1ntico!5e0!3m2!1ses-419!2sco!4v1771156830456!5m2!1ses-419!2sco"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
+              <div className="rounded-2xl overflow-hidden border border-border/50 shadow-lg h-[300px] w-full relative bg-black/20">
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent z-10 pointer-events-none" />
+                <div className="absolute flex items-center justify-center inset-0 z-0">
+                  <Globe />
+                </div>
               </div>
             </div>
           </motion.div>

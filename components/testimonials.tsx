@@ -8,6 +8,7 @@ import { collection, addDoc, query, orderBy, onSnapshot, serverTimestamp, delete
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Trash2, Star } from "lucide-react"
+import { ViewCounter } from "@/components/view-counter"
 
 interface Testimonial {
   id: string
@@ -159,6 +160,9 @@ export function Testimonials() {
 
   return (
     <section id="testimonials" className="relative py-24 md:py-32 overflow-hidden">
+      {/* Real-time View Counter */}
+      <ViewCounter />
+
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -266,6 +270,6 @@ export function Testimonials() {
           </div>
         )}
       </motion.div>
-    </section>
+    </section >
   )
 }
