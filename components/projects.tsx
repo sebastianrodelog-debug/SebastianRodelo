@@ -14,12 +14,15 @@ export function Projects() {
     offset: ["start start", "end end"],
   })
 
-  // Number of cards * card width percentage to determine how far to translate
-  // Each card is ~70vw wide + gap. We want to move from 0 to -(totalWidth - 100vw)
-  // With 4 cards at ~72vw each (70vw card + 2vw gap) = 288vw total, minus 100vw visible = -188vw
-  // We map to [0, 0.8] so the horizontal scroll finishes slightly before the vertical scroll ends,
-  // giving the user time to view the last project ("esperar un poco mas").
-  const x = useTransform(scrollYProgress, [0, 0.8], ["0vw", "-188vw"])
+  // Calculate total width based on number of projects
+  // Each card is ~70vw + 2vw gap = 72vw per item.
+  // Total width = projects.length * 72vw
+  // Visible width = 100vw
+  // Translate = -(totalWidth - 100vw)
+  // For 5 items: -(5 * 72 - 100) = -260vw
+  const totalWidthVw = projects.length * 72
+  const translateVw = -(totalWidthVw - 100)
+  const x = useTransform(scrollYProgress, [0, 0.8], ["0vw", `${translateVw}vw`])
 
   // Progress indicator per card
   const progressWidth = useTransform(
@@ -29,16 +32,22 @@ export function Projects() {
   )
 
   return (
-    <section id="projects" ref={sectionRef} className="relative" style={{ height: `${projects.length * 100 + 100}vh` }}>
-      {/* Sticky container - stays pinned while we scroll through the tall parent */}
-      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
+    <section
+      id="projects"
+      ref={sectionRef}
+      className="relative h-auto md:h-[var(--scroll-height)]"
+      style={{ '--scroll-height': `${projects.length * 100 + 100}vh` } as React.CSSProperties}
+    >
+      {/* Sticky container - stays pinned while we scroll through the tall parent on Desktop */}
+      {/* On Mobile: Standard vertical flow */}
+      <div className="md:sticky md:top-0 md:h-screen flex flex-col justify-center overflow-hidden py-12 md:py-0">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="px-6 md:px-12 mb-8"
+          className="px-6 md:px-12 mb-8 md:mb-12"
         >
           <div className="flex items-end justify-between">
             <div>
@@ -50,7 +59,7 @@ export function Projects() {
               </h2>
             </div>
 
-            {/* Progress bar */}
+            {/* Progress bar (Desktop Only) */}
             <div className="hidden md:flex items-center gap-4">
               <div className="w-32 h-0.5 bg-border rounded-full overflow-hidden">
                 <motion.div
@@ -65,9 +74,9 @@ export function Projects() {
           </div>
         </motion.div>
 
-        {/* Horizontal track - moves left as user scrolls down */}
+        {/* Tracks: Grid on Mobile, Horizontal on Desktop */}
         <motion.div
-          className="flex gap-[2vw] px-6 md:px-12"
+          className="grid grid-cols-2 gap-4 px-4 md:flex md:gap-[2vw] md:px-12 max-md:!transform-none"
           style={{ x }}
         >
           {projects.map((project, i) => (
@@ -77,7 +86,7 @@ export function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="flex-shrink-0 w-[85vw] md:w-[70vw]"
+              className="w-full md:flex-shrink-0 md:w-[70vw]"
             >
               <Link
                 href={`/projects/${project.id}`}
@@ -87,16 +96,16 @@ export function Projects() {
                   className={`relative aspect-[16/10] rounded-xl bg-gradient-to-br ${project.color} border border-border overflow-hidden transition-all duration-500 group-hover:border-primary/50`}
                 >
                   {/* Project number */}
-                  <div className="absolute top-6 left-6 md:top-8 md:left-8">
-                    <span className="text-6xl md:text-8xl font-display font-bold text-foreground/5 group-hover:text-foreground/10 transition-colors duration-500">
+                  <div className="absolute top-2 left-3 md:top-8 md:left-8">
+                    <span className="text-3xl md:text-8xl font-display font-bold text-foreground/5 group-hover:text-foreground/10 transition-colors duration-500">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
 
                   {/* Project info overlay */}
-                  <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
+                  <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-8">
                     {/* Stack tags */}
-                    <div className="flex flex-wrap gap-2 mb-4 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                    <div className="hidden md:flex flex-wrap gap-2 mb-4 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
                       {project.stack.map((tech) => (
                         <span
                           key={tech}
@@ -106,25 +115,26 @@ export function Projects() {
                         </span>
                       ))}
                     </div>
-                    <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+                    {/* Mobile: Smaller Title */}
+                    <h3 className="font-display text-base md:text-3xl font-bold text-foreground group-hover:text-primary transition-colors duration-300 line-clamp-1 md:line-clamp-none">
                       {project.title}
                     </h3>
-                    <p className="text-muted-foreground text-sm mt-2 max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 leading-relaxed">
+                    <p className="hidden md:block text-muted-foreground text-sm mt-2 max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 leading-relaxed">
                       {project.description}
                     </p>
                   </div>
 
                   {/* Corner accent */}
-                  <div className="absolute top-4 right-4 w-3 h-3 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute top-4 right-4 w-2 h-2 md:w-3 md:h-3 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               </Link>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Scroll hint */}
+        {/* Scroll hint (Desktop Only) */}
         <motion.div
-          className="flex justify-center mt-8"
+          className="hidden md:flex justify-center mt-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}

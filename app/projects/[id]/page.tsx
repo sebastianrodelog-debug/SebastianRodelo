@@ -124,15 +124,7 @@ export default async function ProjectPage({
                                 <ExternalLink className="w-5 h-5" />
                                 Ver Demo
                             </a>
-                            <a
-                                href={project.repo}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center justify-center gap-2 px-8 py-4 rounded-lg border border-border text-foreground font-medium text-base hover:bg-secondary transition-colors"
-                            >
-                                <Github className="w-5 h-5" />
-                                Ver Repositorio
-                            </a>
+
                         </div>
 
                         {/* Gallery Grid */}

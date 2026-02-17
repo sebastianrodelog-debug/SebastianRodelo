@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 
 import Link from "next/link"
+import ScrollFloat from '@/components/scroll-float';
 
 export function Hero() {
   return (
@@ -37,43 +38,74 @@ export function Hero() {
               />
             </motion.div>
 
+
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-sm md:text-base font-semibold tracking-widest text-primary uppercase mb-4">
+              <ScrollFloat
+                animationDuration={0.6}
+                ease='back.inOut(2)'
+                scrollStart='top bottom+=10%'
+                scrollEnd='bottom top+=15%'
+                stagger={0.01}
+                containerClassName="mb-4"
+                textClassName="text-sm md:text-base font-semibold tracking-widest text-primary uppercase"
+              >
                 Hola, soy
-              </h2>
+              </ScrollFloat>
+
               <Link
                 href="/about"
-                className="group cursor-pointer bg-transparent border-none outline-none inline-block"
+                className="group cursor-pointer bg-transparent border-none outline-none inline-block decoration-0 select-none"
                 aria-label="Conocer mas sobre Sebastian Rodelo"
               >
-                <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-foreground transition-colors duration-500 group-hover:text-primary mb-6">
+                <ScrollFloat
+                  animationDuration={0.6}
+                  ease='back.inOut(2)'
+                  scrollStart='top bottom+=10%'
+                  scrollEnd='bottom top+=15%'
+                  stagger={0.02}
+                  textClassName="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-foreground transition-colors duration-500 group-hover:text-primary mb-6"
+                >
                   Sebastian Rodelo
-                </h1>
+                </ScrollFloat>
               </Link>
             </motion.div>
           </div>
         </div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-6 text-lg md:text-xl text-muted-foreground tracking-[0.3em] uppercase font-light flex flex-col items-center gap-2"
-        >
-          <span>Full Stack Developer</span>
+        <div className="mt-6 flex flex-col items-center gap-2">
+          <ScrollFloat
+            animationDuration={0.5}
+            ease='back.inOut(2)'
+            scrollStart='top bottom+=10%'
+            scrollEnd='bottom top+=15%'
+            stagger={0.01}
+            textClassName="text-lg md:text-xl text-muted-foreground tracking-[0.3em] uppercase font-light"
+          >
+            Full Stack Developer
+          </ScrollFloat>
+
           <Link
             href="https://atomiclabs.up.railway.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm md:text-base font-medium tracking-[0.2em] text-primary hover:text-foreground transition-colors duration-300 border-b border-primary/30 hover:border-foreground pb-1"
+            className="group"
           >
-            CEO AtomicaLabs
+            <ScrollFloat
+              animationDuration={0.5}
+              ease='back.inOut(2)'
+              scrollStart='top bottom+=10%'
+              scrollEnd='bottom top+=15%'
+              stagger={0.01}
+              textClassName="text-sm md:text-base font-medium tracking-[0.2em] text-primary group-hover:text-foreground transition-colors duration-300 border-b border-primary/30 group-hover:border-foreground pb-1"
+            >
+              CEO AtomicaLabs
+            </ScrollFloat>
           </Link>
-        </motion.p>
+        </div>
 
         <motion.div
           initial={{ opacity: 0 }}

@@ -68,16 +68,33 @@ export const projects = [
   },
   {
     id: 4,
-    title: "Social Media API",
-    stack: ["Express", "GraphQL", "Redis", "Docker"],
-    description:
-      "API robusta para red social con autenticacion, feeds personalizados y sistema de mensajeria.",
-    problem:
-      "Se necesitaba un backend escalable que soportara millones de requests con baja latencia.",
-    solution:
-      "Disene una API con cache distribuido, rate limiting y arquitectura de microservicios.",
-    color: "from-red-950/50 to-background",
-    demo: "#",
+    title: "ServiScore",
+    stack: ["React", "Next.js", "Tailwind CSS"], // Inferring stack
+    description: "Conectando emprendedores. Plataforma para conectar servicios y calificaciones confiables.",
+    problem: "La falta de confianza y visibilidad para nuevos emprendedores limita su crecimiento.",
+    solution: "Una plataforma centralizada donde los usuarios pueden calificar y descubrir servicios locales verificados.",
+    color: "from-zinc-900 to-zinc-950", // Dark gray gradient
+    demo: "https://servi-score.vercel.app/landingPage",
     repo: "#",
+    video: "/serviscoreMedia/Grabación 2026-02-16 142206.mp4",
+    image: "/serviscore-cover.svg",
+    gallery: [
+      "/serviscoreMedia/Captura de pantalla 2026-02-16 142242.png",
+      "/serviscoreMedia/Captura de pantalla 2026-02-16 142257.png",
+      "/serviscoreMedia/Captura de pantalla 2026-02-16 142328.png",
+      "/serviscoreMedia/Captura de pantalla 2026-02-16 142355.png",
+    ]
+  },
+  {
+    id: 5,
+    title: "Ver más proyectos",
+    stack: ["GitHub", "Open Source"],
+    description: "Explora el resto de mi portafolio y contribuciones en mi perfil de GitHub.",
+    problem: "",
+    solution: "",
+    color: "from-neutral-900 to-black",
+    demo: "https://github.com", // Linking to GitHub
+    repo: "https://github.com",
+    image: "/portfolio-icon.png", // Using a generic icon or profile image
   },
 ]
