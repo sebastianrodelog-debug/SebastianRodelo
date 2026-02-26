@@ -2,6 +2,7 @@
 
 import { Hero } from "@/components/hero"
 import { Projects } from "@/components/projects"
+import { CodeMastery } from "@/components/code-mastery"
 import { Skills } from "@/components/skills"
 import { Testimonials } from "@/components/testimonials"
 import { Contact } from "@/components/contact"
@@ -15,6 +16,9 @@ export default function Page() {
 
       {/* Projects - Horizontal Scroll */}
       <Projects />
+
+      {/* Code Mastery Focus */}
+      <CodeMastery />
 
       {/* Skills */}
       <Skills />

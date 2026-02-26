@@ -1,13 +1,26 @@
 "use client"
 
-import { motion } from "framer-motion"
-
+import { motion, useMotionTemplate, useMotionValue } from "framer-motion"
+import { MouseEvent } from "react"
 import Link from "next/link"
 import ScrollFloat from '@/components/scroll-float';
 
 export function Hero() {
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
+
+  function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
+    const { left, top } = currentTarget.getBoundingClientRect()
+    mouseX.set(clientX - left)
+    mouseY.set(clientY - top)
+  }
+
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section
+      id="hero"
+      className="relative h-screen flex items-center justify-center overflow-hidden group/section"
+      onMouseMove={handleMouseMove}
+    >
       {/* Subtle grid background */}
       <div className="absolute inset-0 opacity-[0.03]"
         style={{
@@ -16,9 +29,12 @@ export function Hero() {
         }}
       />
 
-      {/* Subtle red glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-[0.04]"
-        style={{ background: 'radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)' }}
+      {/* Reactive red glow */}
+      <motion.div
+        className="absolute inset-0 opacity-[0.04] transition-opacity duration-300 group-hover/section:opacity-[0.08] pointer-events-none"
+        style={{
+          background: useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, hsl(var(--primary)), transparent 80%)`
+        }}
       />
 
       <div className="relative text-center">

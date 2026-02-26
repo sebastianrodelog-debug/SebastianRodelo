@@ -123,36 +123,38 @@ export const projects = [
 export interface Skill {
   name: string
   icon: string
+  category?: "Frontend" | "Backend" | "Herramientas"
+  description?: string
 }
 
 export const technologies: Skill[] = [
-  { name: "React", icon: "react" },
-  { name: "Vue.js", icon: "https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg" },
-  { name: "TypeScript", icon: "typescript" },
-  { name: "JavaScript", icon: "javascript" },
-  { name: "Next.js", icon: "nextdotjs" },
-  { name: "Node.js", icon: "nodedotjs" },
-  { name: "Python", icon: "python" },
-  { name: "PostgreSQL", icon: "postgresql" },
-  { name: "MongoDB", icon: "mongodb" },
-  { name: "GraphQL", icon: "graphql" },
-  { name: "Tailwind CSS", icon: "tailwindcss" },
-  { name: "Firebase", icon: "firebase" },
-  { name: "Vercel", icon: "vercel" },
-  { name: "Express", icon: "express" },
-  { name: "Solar2D", icon: "/icons/solar2d.png" },
+  { name: "React", icon: "react", category: "Frontend", description: "Librería principal para UI interactiva." },
+  { name: "Vue.js", icon: "https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg", category: "Frontend", description: "Framework progresivo para interfaces web." },
+  { name: "TypeScript", icon: "typescript", category: "Frontend", description: "JavaScript tipado para mayor robustez." },
+  { name: "JavaScript", icon: "javascript", category: "Frontend", description: "Lenguaje fundamental de la web." },
+  { name: "Next.js", icon: "nextdotjs", category: "Frontend", description: "Framework de React para producción." },
+  { name: "Node.js", icon: "nodedotjs", category: "Backend", description: "Entorno de ejecución para el servidor." },
+  { name: "Python", icon: "python", category: "Backend", description: "Lenguaje versátil para scripting y backend." },
+  { name: "PostgreSQL", icon: "postgresql", category: "Backend", description: "Base de datos relacional robusta." },
+  { name: "MongoDB", icon: "mongodb", category: "Backend", description: "Base de datos NoSQL flexible." },
+  { name: "GraphQL", icon: "graphql", category: "Backend", description: "Lenguaje de consulta de APIs." },
+  { name: "Tailwind CSS", icon: "tailwindcss", category: "Frontend", description: "Framework CSS utility-first." },
+  { name: "Firebase", icon: "firebase", category: "Backend", description: "BaaS para desarrollo rápido." },
+  { name: "Vercel", icon: "vercel", category: "Herramientas", description: "Plataforma de despliegue frontend." },
+  { name: "Express", icon: "express", category: "Backend", description: "Framework web minimalista para Node." },
+  { name: "Solar2D", icon: "/icons/solar2d.png", category: "Herramientas", description: "Motor de juegos 2D multiplataforma." },
 ]
 
 export const tools: Skill[] = [
-  { name: "Git", icon: "git" },
-  { name: "GitHub", icon: "github" },
-  { name: "Docker", icon: "docker" },
-  { name: "AWS", icon: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" },
-  { name: "Figma", icon: "figma" },
-  { name: "VS Code", icon: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" },
-  { name: "Terminal", icon: "lucide-terminal" },
-  { name: "npm", icon: "npm" },
-  { name: "Linux", icon: "linux" },
+  { name: "Git", icon: "git", category: "Herramientas", description: "Control de versiones distribuido." },
+  { name: "GitHub", icon: "github", category: "Herramientas", description: "Plataforma de alojamiento de código." },
+  { name: "Docker", icon: "docker", category: "Herramientas", description: "Contenerización de aplicaciones." },
+  { name: "AWS", icon: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg", category: "Herramientas", description: "Servicios en la nube escalables." },
+  { name: "Figma", icon: "figma", category: "Herramientas", description: "Herramienta de diseño colaborativo." },
+  { name: "VS Code", icon: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg", category: "Herramientas", description: "Editor de código principal." },
+  { name: "Terminal", icon: "lucide-terminal", category: "Herramientas", description: "Interfaz de línea de comandos." },
+  { name: "npm", icon: "npm", category: "Herramientas", description: "Gestor de paquetes de Node." },
+  { name: "Linux", icon: "linux", category: "Herramientas", description: "Sistema operativo de preferencia." },
 ]
 
 export const allSkills = [...technologies, ...tools]

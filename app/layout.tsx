@@ -45,6 +45,7 @@ export const viewport: Viewport = {
 
 import { ScrollObserver } from '@/components/scroll-observer'
 import { AuthProvider } from '@/components/auth-context'
+import { Navbar } from '@/components/navbar'
 
 export default function RootLayout({
   children,
@@ -53,8 +54,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${inter.variable} ${spaceGrotesk.variable}`}>
-      <body className="font-sans antialiased bg-background text-foreground overflow-x-hidden">
+      <body className="font-sans antialiased bg-background text-foreground overflow-x-hidden" id="top">
         <AuthProvider>
+          <Navbar />
           <ScrollObserver />
           {children}
         </AuthProvider>
